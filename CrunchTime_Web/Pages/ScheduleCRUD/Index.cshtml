@@ -1,0 +1,81 @@
+﻿@page
+@model CrunchTime_Web.Pages.ScheduleCRUD.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleModel[0].ScheduleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleModel[0].HoursStudied)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleModel[0].DateOfStudy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleModel[0].RemainingStudyHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleModel[0].ModuleWeekDay)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleModel[0].Module)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ScheduleModel) {
+        <tr>
+            @if(@item.UserID == @Model.currentUser)
+            {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ScheduleName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoursStudied)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfStudy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RemainingStudyHours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModuleWeekDay)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Module.ModuleModelID)
+                    </td>
+
+                    @if (@item.ModuleWeekDay == @Model.Day)
+                    {
+                        <td>
+                            <h5>Study This Today.</h5>
+                        </td>
+                    }
+
+                    <td>
+                <a asp-page="./Edit" asp-route-id="@item.ScheduleModelID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ScheduleModelID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ScheduleModelID">Delete</a>
+            </td>
+            }
+ 
+        </tr>
+}
+    </tbody>
+</table>

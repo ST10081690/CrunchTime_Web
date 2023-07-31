@@ -1,0 +1,57 @@
+﻿@page
+@model CrunchTime_Web.Pages.ScheduleCRUD.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ScheduleModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduleModel.ScheduleName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ScheduleModel.ScheduleName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduleModel.HoursStudied)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ScheduleModel.HoursStudied)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduleModel.DateOfStudy)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ScheduleModel.DateOfStudy)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduleModel.RemainingStudyHours)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ScheduleModel.RemainingStudyHours)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduleModel.ModuleWeekDay)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ScheduleModel.ModuleWeekDay)
+        </dd>
+        
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduleModel.Module)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ScheduleModel.Module.ModuleModelID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ScheduleModel?.ScheduleModelID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
